@@ -8,7 +8,7 @@ import styles from './index.css'
 
 //生成模拟数据
 let dataSource = Mock.mock({
-  'dataSources|12': [{
+  'dataSources|10': [{
     'id|+1': 1,
     'date':'@date("MM-dd")',
     'time':'@time("HH:mm")',
@@ -25,7 +25,7 @@ const dateFormat = 'MM-DD';
 let data = Array.from(dataSource.dataSources);
 
 let sortedData =data.sort((b, a) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
-
+let filtedData = sortedData;
 
 console.log({dataSource});
 console.log({data});
@@ -37,11 +37,22 @@ const itemColor=(action)=>{
   action==='新建'? "green":action==='删除'? "red":action==='修改'? "blue":"blue"
   )
 }
+
 //按照时间筛选
 function onDateChange(date, dateString) {
-  console.log({date,dateString});
-  let filtedData = sortedData.filter((logs) =>{
-    return  "05-05"<logs.date<"10-10"
+  let sDateArr = dateString[0].split("-");
+  let eDateArr = dateString[1].split("-");
+
+//  console.log({sDateArr})
+//  console.log({eDateArr})
+
+  filtedData = sortedData.filter((logs) =>{
+
+    const lDateArr = logs.date.split("-");
+//    console.log({lDateArr})
+    return lDateArr[0] === sDateArr[0] ?
+      lDateArr[1] >= sDateArr[1] : lDateArr[0] === eDateArr[0] ?
+        lDateArr[1] <= eDateArr[1] : sDateArr[0] < lDateArr[0] && lDateArr[0] < eDateArr[0]
   })
   console.log({filtedData})
 }
@@ -55,7 +66,7 @@ class Demo extends Component {
         {/*标题*/}
         <h1 style={{ marginLeft: 300,marginTop:20}}>操作日志</h1>
         <br/>
-        <hr style={{height:1 ,}} />
+        <hr style={{height:1}} />
         {/*卡片*/}
         <Card className={styles.card} title="index">
           <p>红色圈代表删除</p>
@@ -75,7 +86,7 @@ class Demo extends Component {
         <div className={styles.body}>
            <Timeline>
             {
-              sortedData.map((logs)=>{
+              filtedData.map((logs)=>{
                 return <Timeline.Item
                   key={logs.id}
                   color={itemColor(logs.action)}
