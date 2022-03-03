@@ -97,8 +97,8 @@ function Demo() {
           format={dateFormat}
         />
         {/*主体*/}
-        <div className={styles.body}>
-           <Timeline>
+        <div >
+           <Timeline className={styles.body}>
             {
                pageNumber === 1 ? dateRange >= 0 ?
                 filteredData1.map((logs)=>{
@@ -117,7 +117,6 @@ function Demo() {
                      2022-{logs.date}  {logs.time}<br/><font color={itemColor(logs.action)}>{logs.name} </font>{logs.action}了 {logs.object}
                    </Timeline.Item>
                  }):<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Icon type="exclamation-circle" style={{ color: 'red' }} />&nbsp;&nbsp;&nbsp;无结果</p>
-
             }
 
           </Timeline>
