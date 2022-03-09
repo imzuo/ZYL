@@ -81,8 +81,8 @@ export default () => {
           labelCol={{ span: 4 }}
           width={260}
           initialValue={userInfo.id}
+          disabled={true}
         >
-          <Input defaultValue={userInfo.id} disabled={true} style={{width: 260}}/>
         </ProFormText>
         <ProFormText
           label="Name"
@@ -91,7 +91,6 @@ export default () => {
           width={260}
           initialValue={userInfo.name}
         />
-
         <ProFormText.Password
           label="Password"
           name="password"
@@ -152,6 +151,7 @@ export default () => {
           labelCol={{ span: 4 }}
           width={260}
           initialValue={userInfo.access}
+          disabled={true}
         >
         </ProFormText>
         <ProFormText
@@ -160,6 +160,7 @@ export default () => {
           labelCol={{ span: 4 }}
           width={260}
           initialValue={userInfo.creatTime}
+          disabled={true}
         >
         </ProFormText>
         <ProFormText
