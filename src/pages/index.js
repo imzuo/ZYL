@@ -1,4 +1,3 @@
-// noinspection JSUnresolvedVariable
 
 import React, { useState, useRef } from 'react';
 import { Input, Button, Radio,message} from 'antd';
@@ -29,7 +28,6 @@ export default () => {
   })
   const [loading,setLoading]=useState(false)
   const [radioValue,setRadioValue]=useState(userInfo.gender)
-  const [passwordValue,setPasswordValue] =useState(userInfo.password)
 
   async function handleSubmit () {
     const newUserInfo= formRef.current.getFieldsValue()
@@ -100,7 +98,6 @@ export default () => {
           labelCol={{ span: 4 }}
           width={260}
           initialValue={userInfo.password}
-          onChange={(e)=>{setPasswordValue(e.target.value)}}
         >
         </ProFormText.Password>
         <ProFormText
