@@ -1,7 +1,8 @@
+import styles from './index.css';
 
 function BasicLayout(props) {
   return (
-    <div >
+    <div>
       {props.children}
     </div>
   );

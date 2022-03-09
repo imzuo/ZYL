@@ -8,8 +8,8 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "axios": "^0.26.0",
-    "mockjs": "^1.1.0",
+    "@ant-design/pro-form": "^1.57.0",
+    "antd": "^4.19.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
